@@ -14,7 +14,7 @@ public class PromoCode {
     private String code;
     private int discount;
     private LocalDate expiryDate;
-    private int usageCount;
+    private int usageCount = 0;
 
     public PromoCode() {
     }

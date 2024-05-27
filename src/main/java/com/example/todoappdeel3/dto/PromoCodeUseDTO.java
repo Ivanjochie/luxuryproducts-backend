@@ -6,4 +6,5 @@ public class PromoCodeUseDTO {
     public PromoCodeUseDTO(String code) {
         this.code = code;
     }
+
 }

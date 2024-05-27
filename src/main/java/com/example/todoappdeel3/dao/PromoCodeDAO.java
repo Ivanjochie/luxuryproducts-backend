@@ -11,8 +11,6 @@ import java.util.Optional;
 public class PromoCodeDAO {
     private final PromoCodeRepository promoCodeRepository;
 
-
-
     public PromoCodeDAO(PromoCodeRepository promoCodeRepository) {
         this.promoCodeRepository = promoCodeRepository;
     }
@@ -33,6 +31,10 @@ public class PromoCodeDAO {
             PromoCode promoCode = new PromoCode(promoCodeDTO.code, promoCodeDTO.discount, promoCodeDTO.expiryDate);
             promoCodeRepository.save(promoCode);
         }
+    }
+
+    public PromoCode getPromoCode(String code) {
+        return promoCodeRepository.findByCode(code);
     }
 
     public List<PromoCode> getAllActivePromoCodes() {
