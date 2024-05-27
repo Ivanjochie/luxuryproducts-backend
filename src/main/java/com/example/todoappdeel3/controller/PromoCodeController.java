@@ -2,6 +2,8 @@ package com.example.todoappdeel3.controller;
 
 import com.example.todoappdeel3.dao.PromoCodeDAO;
 import com.example.todoappdeel3.dto.PromoCodeDTO;
+import com.example.todoappdeel3.dto.PromoCodeUseDTO;
+import com.example.todoappdeel3.services.PromoCodeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,8 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class PromoCodeController {
     private final PromoCodeDAO promoCodeDAO;
 
-    public PromoCodeController(PromoCodeDAO promoCodeDAO) {
+    private final PromoCodeService promoCodeService;
+
+
+    public PromoCodeController(PromoCodeDAO promoCodeDAO, PromoCodeService promoCodeService) {
         this.promoCodeDAO = promoCodeDAO;
+        this.promoCodeService = promoCodeService;
     }
 
     @PostMapping
@@ -21,5 +27,9 @@ public class PromoCodeController {
         return ResponseEntity.ok("Promo code created");
     }
 
-
+    @PostMapping("/use")
+    public ResponseEntity<String> usePromoCode(@RequestBody PromoCodeUseDTO promoCodeUseDTO) {
+        this.promoCodeService.usePromoCode(promoCodeUseDTO.code);
+        return ResponseEntity.ok("Promo code used");
+    }
 }

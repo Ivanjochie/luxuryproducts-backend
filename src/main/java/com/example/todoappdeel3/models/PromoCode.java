@@ -14,6 +14,7 @@ public class PromoCode {
     private String code;
     private int discount;
     private LocalDate expiryDate;
+    private int usageCount;
 
     public PromoCode() {
     }
@@ -54,6 +55,13 @@ public class PromoCode {
 
     public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
+    }
+
+    public int getUsageCount() {
+        return usageCount;
+    }
+    public void setUsageCount(int usageCount) {
+        this.usageCount = usageCount;
     }
 }
 

@@ -11,6 +11,8 @@ import java.util.Optional;
 public class PromoCodeDAO {
     private final PromoCodeRepository promoCodeRepository;
 
+
+
     public PromoCodeDAO(PromoCodeRepository promoCodeRepository) {
         this.promoCodeRepository = promoCodeRepository;
     }
@@ -44,4 +46,6 @@ public class PromoCodeDAO {
         promoCodes.removeIf(promoCode -> promoCode.getExpiryDate().isAfter(java.time.LocalDate.now()));
         return promoCodes;
     }
+
+
 }
