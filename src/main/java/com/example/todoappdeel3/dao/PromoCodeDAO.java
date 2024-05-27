@@ -5,6 +5,7 @@ import com.example.todoappdeel3.models.PromoCode;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PromoCodeDAO {
@@ -15,8 +16,21 @@ public class PromoCodeDAO {
     }
 
     public void createPromoCode(PromoCodeDTO promoCodeDTO) {
-        PromoCode promoCode = new PromoCode(promoCodeDTO.code, promoCodeDTO.discount, promoCodeDTO.expiryDate);
-        promoCodeRepository.save(promoCode);
+
+        Optional<PromoCode> existingPromoCode = Optional.ofNullable(promoCodeRepository.findByCode(promoCodeDTO.code));
+
+        if (existingPromoCode.isPresent()) {
+            // If the promo code already exists, update the existing one
+            PromoCode promoCode = existingPromoCode.get();
+            promoCode.setDiscount(promoCodeDTO.discount);
+            promoCode.setExpiryDate(promoCodeDTO.expiryDate);
+
+            System.out.println("Warning: Are you sure you want to override this code?");
+        } else {
+            // If the promo code does not exist, create a new one
+            PromoCode promoCode = new PromoCode(promoCodeDTO.code, promoCodeDTO.discount, promoCodeDTO.expiryDate);
+            promoCodeRepository.save(promoCode);
+        }
     }
 
     public List<PromoCode> getAllActivePromoCodes() {

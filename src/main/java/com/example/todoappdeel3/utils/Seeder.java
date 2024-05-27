@@ -1,17 +1,17 @@
 package com.example.todoappdeel3.utils;
 
 
-import com.example.todoappdeel3.dao.CategoryDAO;
-import com.example.todoappdeel3.dao.OrderRepository;
-import com.example.todoappdeel3.dao.ProductDAO;
-import com.example.todoappdeel3.dao.UserRepository;
+import com.example.todoappdeel3.dao.*;
 import com.example.todoappdeel3.models.Category;
 import com.example.todoappdeel3.models.CustomUser;
 import com.example.todoappdeel3.models.Product;
+import com.example.todoappdeel3.models.PromoCode;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 
 @Component
@@ -20,18 +20,21 @@ public class Seeder {
     private final UserRepository userRepository;
     private final CategoryDAO categoryDAO;
     private final OrderRepository orderRepository;
+    private final PromoCodeRepository promoCodeRepository;
 
-    public Seeder(ProductDAO productDAO, UserRepository userRepository, CategoryDAO categoryDAO, OrderRepository orderRepository) {
+    public Seeder(ProductDAO productDAO, UserRepository userRepository, CategoryDAO categoryDAO, OrderRepository orderRepository, PromoCodeRepository promoCodeRepository) {
         this.productDAO = productDAO;
         this.userRepository = userRepository;
         this.categoryDAO = categoryDAO;
         this.orderRepository = orderRepository;
+        this.promoCodeRepository = promoCodeRepository;
     }
 
     @EventListener
     public void seed(ContextRefreshedEvent event){
         this.seedProducts();
         this.seedAdmin();
+        this.seedPromoCodes();
     }
 
     private void seedProducts(){
@@ -42,7 +45,7 @@ public class Seeder {
         Category categoryCapsAndBeanies = new Category("Designer Headwear");
         Category categoryOuterwear = new Category("Premium Outerwear");
 
-// Luxe producten definiëren
+        // Luxe producten definiëren
         Product product1 = new Product("Cashmere Hoodie", "Crafted from 100% pure cashmere, this hoodie offers unparalleled softness and warmth, ideal for those who seek both comfort and luxury.", 400.00, categoryHoodies, "A+", "Black", "Tailored Fit", "imageURL", "One-size", 5);
         Product product2 = new Product("Silk Hoodie", "Experience the smooth touch of pure silk with this hoodie, combining casual design with luxury fabric for a sophisticated, relaxed look.", 350.00, categoryHoodies, "A++", "Blue", "Tailored Fit", "imageURL", "One-size", 7);
         Product product11 = new Product("White Wool Hoodie", "Made from fine wool, this white hoodie blends comfort with elegance, perfect for a subtle, stylish statement.", 320.00, categoryHoodies, "A++", "White", "Tailored Fit", "imageURL", "One-size", 8);
@@ -84,5 +87,10 @@ public class Seeder {
         String encodedPassword = new BCryptPasswordEncoder().encode("IreallyL0vePupp1es!");
         CustomUser customUser = new CustomUser("bob@bobsluxuryenterprise.com", encodedPassword, "ADMIN");
         userRepository.save(customUser);
+    }
+
+    private void seedPromoCodes(){
+        PromoCode promoCodeDefault = new PromoCode("LUXE10", 10, LocalDate.now().plusMonths(1));
+        this.promoCodeRepository.save(promoCodeDefault);
     }
 }
