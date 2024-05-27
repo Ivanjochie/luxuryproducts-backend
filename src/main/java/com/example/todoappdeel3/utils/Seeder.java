@@ -31,7 +31,7 @@ public class Seeder {
     @EventListener
     public void seed(ContextRefreshedEvent event){
         this.seedProducts();
-        this.seedUser();
+        this.seedAdmin();
     }
 
     private void seedProducts(){
@@ -80,12 +80,9 @@ public class Seeder {
         this.categoryDAO.createCategory(categoryOuterwear);
     }
 
-    private void seedUser(){
-        CustomUser customUser = new CustomUser();
-        customUser.setEmail("bob@bobsluxuryenterprise.com");
-        customUser.setPassword(new BCryptPasswordEncoder().encode("IreallyL0vePupp1es!"));
+    private void seedAdmin(){
+        String encodedPassword = new BCryptPasswordEncoder().encode("IreallyL0vePupp1es!");
+        CustomUser customUser = new CustomUser("bob@bobsluxuryenterprise.com", encodedPassword, "ADMIN");
         userRepository.save(customUser);
     }
-
-
 }
