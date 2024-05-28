@@ -19,6 +19,7 @@ public class PromoCodeService {
         PromoCode promoCode = promoCodeRepository.findByCode(code);
         if (promoCode != null) {
             promoCode.setUsageCount(promoCode.getUsageCount() + 1);
+            System.out.println("Promo code used " + promoCode.getUsageCount() + " times");
             promoCodeRepository.save(promoCode);
         } else {
             throw new IllegalArgumentException("Promo code not found");
