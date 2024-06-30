@@ -84,8 +84,8 @@ public class Seeder {
     }
 
     private void seedAdmin(){
-        String encodedPassword = new BCryptPasswordEncoder().encode("IreallyL0vePupp1es!");
-        CustomUser customUser = new CustomUser("bob@bobsluxuryenterprise.com", encodedPassword, "ADMIN");
+        String encodedPassword = new BCryptPasswordEncoder().encode("ADMIN");
+        CustomUser customUser = new CustomUser("ADMIN", encodedPassword, "ROLE_ADMIN");
         userRepository.save(customUser);
     }
 

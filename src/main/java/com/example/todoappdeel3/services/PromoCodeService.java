@@ -22,7 +22,18 @@ public class PromoCodeService {
             System.out.println("Promo code used " + promoCode.getUsageCount() + " times");
             promoCodeRepository.save(promoCode);
         } else {
-            throw new IllegalArgumentException("Promo code not found");
+            System.out.println("Promo code not found");
+        }
+    }
+
+    @Transactional
+    public void deletePromoCode(String code) {
+        PromoCode promoCode = promoCodeRepository.findByCode(code);
+        if (promoCode != null) {
+            promoCodeRepository.delete(promoCode);
+            System.out.println("Promo code deleted");
+        } else {
+            System.out.println("Promo code not found");
         }
     }
 }
