@@ -34,7 +34,6 @@ public class Seeder {
     public void seed(ContextRefreshedEvent event){
         this.seedProducts();
         this.seedAdmin();
-        this.seedPromoCodes();
     }
 
     private void seedProducts(){
@@ -89,8 +88,4 @@ public class Seeder {
         userRepository.save(customUser);
     }
 
-    private void seedPromoCodes(){
-        PromoCode promoCodeDefault = new PromoCode("LUXE10", 10, LocalDate.now().plusMonths(1));
-        this.promoCodeRepository.save(promoCodeDefault);
-    }
 }
