@@ -24,11 +24,15 @@ public class PromoCodeDAO {
             PromoCode promoCode = existingPromoCode.get();
             promoCode.setDiscount(promoCodeDTO.discount);
             promoCode.setExpiryDate(promoCodeDTO.expiryDate);
+            promoCode.setType(promoCodeDTO.type);
+            promoCode.setMinimumAmount(promoCodeDTO.minimumAmount);
+
+            promoCodeRepository.save(promoCode);
 
             System.out.println("Warning: Are you sure you want to override this code?");
         } else {
             // If the promo code does not exist, create a new one
-            PromoCode promoCode = new PromoCode(promoCodeDTO.code, promoCodeDTO.discount, promoCodeDTO.expiryDate);
+            PromoCode promoCode = new PromoCode(promoCodeDTO.code, promoCodeDTO.discount, promoCodeDTO.expiryDate, promoCodeDTO.type, promoCodeDTO.minimumAmount);
             promoCodeRepository.save(promoCode);
         }
     }
