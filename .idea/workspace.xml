@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af1ccafc-4a80-4d07-a7a6-89714891a0f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/todoappdeel3/dao/PromoCodeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/todoappdeel3/dao/PromoCodeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/todoappdeel3/models/PromoCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/todoappdeel3/models/PromoCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/todoappdeel3/utils/Seeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/todoappdeel3/utils/Seeder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/todoappdeel3/dao/PromoCodeDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/todoappdeel3/dao/PromoCodeDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/todoappdeel3/models/PromoCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/todoappdeel3/models/PromoCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/todoappdeel3/utils/Seeder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/todoappdeel3/utils/Seeder.class" afterDir="false" />
-    </list>
+    <list default="true" id="af1ccafc-4a80-4d07-a7a6-89714891a0f7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1719748729531</updated>
       <workItem from="1719748730809" duration="269000" />
-      <workItem from="1719749109726" duration="2964000" />
+      <workItem from="1719749109726" duration="3058000" />
     </task>
     <servers />
   </component>
