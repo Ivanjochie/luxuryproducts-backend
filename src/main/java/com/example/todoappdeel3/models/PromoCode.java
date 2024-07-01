@@ -78,5 +78,7 @@ public class PromoCode {
     public void setMinimumAmount(double minimumAmount) {
         this.minimumAmount = minimumAmount;
     }
+
+    // Add a toString method
 }
 
