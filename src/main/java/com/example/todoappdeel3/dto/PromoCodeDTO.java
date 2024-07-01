@@ -12,4 +12,13 @@ public class PromoCodeDTO {
     @JsonAlias("expiry_date")
     public LocalDate expiryDate;
 
+
+    public PromoCodeDTO(String code, int discount, String type, double minimumAmount, LocalDate expiryDate) {
+        this.code = code;
+        this.discount = discount;
+        this.type = type;
+        this.minimumAmount = minimumAmount;
+        this.expiryDate = expiryDate;
+    }
+
 }
