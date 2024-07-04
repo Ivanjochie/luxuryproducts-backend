@@ -27,12 +27,18 @@ public class PromoCodeController {
     @PostMapping("/create")
     public ResponseEntity<String> createPromoCode(@RequestBody PromoCodeDTO promoCodeDTO) {
         System.out.println("Creating promo code");
+        System.out.println(promoCodeDTO.code);
+        System.out.println(promoCodeDTO.discount);
+        System.out.println(promoCodeDTO.expiryDate);
+        System.out.println(promoCodeDTO.minimumAmount);
+        System.out.println(promoCodeDTO.type);
         this.promoCodeDAO.createPromoCode(promoCodeDTO);
         return ResponseEntity.ok("Promo code created");
     }
 
     @PostMapping("/use")
     public ResponseEntity<String> usePromoCode(@RequestBody PromoCodeUseDTO promoCodeUseDTO) {
+        System.out.println("Using promo code");
         this.promoCodeService.usePromoCode(promoCodeUseDTO.code);
         return ResponseEntity.ok("Promo code used");
     }
@@ -48,6 +54,13 @@ public class PromoCodeController {
         System.out.println("Getting promo code with code " + code);
         PromoCode promoCode = this.promoCodeDAO.getPromoCode(code);
         return ResponseEntity.ok(promoCode);
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity<String> deletePromoCode(@RequestParam String code) {
+        System.out.println("Deleting promo code with code " + code);
+        this.promoCodeService.deletePromoCode(code);
+        return ResponseEntity.ok("Promo code deleted");
     }
 
     @GetMapping("/inactive")

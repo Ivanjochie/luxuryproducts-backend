@@ -37,10 +37,15 @@ public class SecurityConfig {
                 .userDetailsService(userService)
                 .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/products").permitAll()
-                        .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/error").anonymous()
-                        .anyRequest().authenticated()
+                                .requestMatchers("/products/**").permitAll()
+                                .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/order/**").permitAll()
+                                .requestMatchers("/error").anonymous()
+                                .requestMatchers("/api/promo-codes/delete/**").hasRole("ADMIN")
+                                .requestMatchers("/api/promo-codes/create").hasRole("ADMIN")
+                                .anyRequest().authenticated()
+                        // here you can add more endpoints that should be authenticated
+                        // admin example: .requestMatchers("/admin/**").hasRole("ADMIN")
                 )
                 .build();
     }

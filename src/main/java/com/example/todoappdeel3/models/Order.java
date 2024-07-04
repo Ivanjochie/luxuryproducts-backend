@@ -3,6 +3,8 @@ package com.example.todoappdeel3.models;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -16,6 +18,14 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private CustomUser customUser;
+
+    @ManyToMany
+    @JoinTable(
+            name = "order_products",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private List<Product> products = new ArrayList<>();
 
     public Order() {
 

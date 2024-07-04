@@ -3,6 +3,9 @@ package com.example.todoappdeel3.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 public class Product {
@@ -20,9 +23,8 @@ public class Product {
     private Integer stock;
     private boolean isFinished = false;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @ManyToMany(mappedBy = "products")
+    private List<Order> orders = new ArrayList<>();
 
      /*
     Maps the many-to-one relationship between product and category, jsonbackreference so that we do not get an
@@ -148,11 +150,11 @@ public class Product {
         isFinished = finished;
     }
 
-    public Order getOrder() {
-        return order;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }
